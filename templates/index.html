@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Iris Flower Classification</title>	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,700');
+
+html, body{
+  height: 100%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  color:#222;
+}
+
+.navbar-brand img{
+  width: 80px;
+  height: 70px;
+}
+.navbar-nav li{
+  padding-right: 20px;
+}
+.nav-link{
+  font-size: 1.1em !important;
+}
+.carousel-inner img{
+  width: 100%;
+}
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.carousel-caption h1 {
+  font-size: 500%;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 10px #000;
+}
+.carousel-caption h3 {
+  font-size: 200%;
+  font-weight: 500;
+  text-shadow: 1px 1px 10px #000;
+  padding-bottom: 1rem;
+}
+.btn-primary {
+  background-color: #6648b1;
+  border: 1px solid #564d7c;
+  width: 200px;
+}
+.btn-primary:hover {
+  background-color: #563d7c;
+  border: 1px solid #563d7c;
+}
+.jumbotron {
+  padding: 1rem;
+  border-radius: 0;
+  height: 200px;
+}
+.padding {
+  padding-bottom: 2rem;
+} 
+.welcome {
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+.welcome hr {
+  border-top: 2px solid #b4b4b4;
+  width: 95%;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+}
+.fa-code {
+  color: #e54d26;
+}
+.fa-bold {
+  color: #563d7c;
+}
+.fa-css3 {
+  color: #2a63af;
+}
+.fa-code, .fa-bold, .fa-css3 {
+  font-size: 4em;
+  margin: 1rem;
+}
+.fun{
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.gif {
+  max-width: 100%;
+}
+.social a {
+  font-size: 4.5em;
+  padding: 3rem;
+}
+.fa-facebook {
+  color: #3b5998;
+}
+.fa-linkedin-in {
+  color: #0072b1;
+}
+.fa-instagram {
+  color: #e95950;
+}
+.fa-github {
+  color: #211F1F;
+}
+
+.fa-facebook:hover,
+.fa-twitter:hover,
+.fa-google-plus-g:hover,
+.fa-instagram:hover,
+.fa-youtube:hover {
+  color: #d5d5d5;
+}
+footer {
+  background-color: #3f3f3f;
+  color: #d5d5d5;
+  padding-top: 2rem;
+}
+hr.light {
+  border-top: 1px solid #d5d5d5;
+  width: 75%;
+  margin-top: .8rem;
+  margin-bottom: 1rem;
+}
+footer a {
+  color: #d5d5d5;
+}
+hr.light-100 {
+  border-top: 1px solid #d5d5d5;
+  width: 100%;
+  margin-top: .8rem;
+  margin-bottom: 1rem;
+}
+.footer-image img{
+  width: 150px;
+  height: 60px;
+}
+
+
+/*---Media Queries --*/
+@media (max-width: 1500px){
+  .carousel-inner img{
+    width: 100%;
+    height: 550px;
+  }
+}
+
+@media (max-width: 992px) {
+  .social a{
+    font-size: 4em;
+    padding: 2rem;
+  }
+  .carousel-inner img{
+    width: 100%;
+    height: 400px;
+  }
+  }
+@media (max-width: 768px) {
+  .carousel-caption {
+    top: 45%;
+  }
+  .carousel-caption h1 {
+    font-size: 350%;
+  }
+  .carousel-caption h3 {
+    font-size: 140%;
+    font-weight: 400;
+    padding-bottom: 0.2rem;
+  }
+  .carousel-caption .btn {
+    font-size: 95%;
+    padding: 8px 14px;
+  }
+  .display-4 {
+    font-size: 200%;
+  } 
+  .display-4 {
+    font-size: 200%;
+  }
+  .social a{
+    font-size: 2.5em;
+    padding: 1.2rem;
+  }
+  .carousel-inner img{
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 576px) {
+  carousel-caption {
+    top: 40%;
+  }
+  .carousel-caption h1 {
+    font-size: 250%;
+  }
+  .carousel-caption h3 {
+    font-size: 110%;
+  }
+  .carousel-caption .btn {
+    font-size: 90%;
+    padding: 4px 8px;
+  }
+  .carousel-indicators {
+    display: none;
+  }
+  .display-4 {
+    font-size: 160%;
+  }
+  .social a{
+    font-size: 2em;
+    padding: 1.7rem;
+  }
+  .carousel-inner img{
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+
+/*---Firefox Bug Fix --*/
+.carousel-item {
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+/*--- Bootstrap Padding Fix --*/
+[class*="col-"] {
+    padding: 1rem;
+}
+
+
+
+
+
+/*
+Extra small (xs) devices (portrait phones, less than 576px)
+No media query since this is the default in Bootstrap
+
+Small (sm) devices (landscape phones, 576px and up)
+@media (min-width: 576px) { ... }
+
+Medium (md) devices (tablets, 768px and up)
+@media (min-width: 768px) { ... }
+
+Large (lg) devices (desktops, 992px and up)
+@media (min-width: 992px) { ... }
+
+Extra (xl) large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { ... }
+*/
+
+</style>
+
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#"><img src="https://lh3.googleusercontent.com/odALAaFI2Ni_p3a7aEq96P-DOe2EafgbXNrvHcQihy7JxLZKuNW4ci6aeJ78p_Sa4LuryzX_lpHh3-0ihzQnKrXsY0WGShTmTSWb_1S-bZIV90SUucEAQRTHoWsClX6dUr9nd_qANjO4FMha80WWmvv2aEHya7gx710znQ64wE24TVw26cpkCFY3t1VI7USbFoBp2d4LRAs_xxiUHu0op0zxkupZfSDlMZb6IexjmiKcPK9lOkgpGqmDDUdKznmhApfR10K_8jnuswwXvU8gKn54MKStGe6V_HTcAflMDU_9ibaPgVUUQsrvYx7jS7OMZAqKNfXVYWnWtMwW05NB9_RjQXAgZu4yjiH96EKC7GJbQqueUBCzJdImZcPBv1mLXLmaNN38WS0t_wFcnNjZyodfXUEYqums1Jyv4MTHpzVfjQWfgsPXYD6yn1xpaULhfjV0L7kU266jIlNP8Ti8bcmTFfLtISHtICA9x3QhgvbHDZuP5Y6m9AFtbTf_wpWH0xPMNQJQPGQgKC_OO4f2Jth-Gpqvy7BBVgXKjzObTbbNx2Zu178fKrwaxAFJHwn44_yPmJL830vUyQh8UZ6nyIpnXN1OytCcp4bCNsAX2UmQsgCFTus5U3S4gEK5jIJKUT6sYolKwO6OuGzyav6f2u4aUIuRqMykj_zwXxYGOOwvmsdBT2w4vTK9QZ2P3Q=s286-no?authuser=0"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
+				Machine Learning Web API
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+<!--- Jumbotron -->
+<div class="container-fluid">
+	<div class="row jumbotron">
+		<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+			<p class="lead">Web API for Machine Learning Model overcomes the barrier between the developers and consumers.</p>
+			<p class="lead">It helps the developer to present the Machine Learning Model to the people without explaining<br>them the complexity of the code.</p>
+			<p class="lead">The Web API makes the complex model user-friendly, thus, benefitting people. </p>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+			<img class="card-img-top" src="https://lh3.googleusercontent.com/lV7N0GIxv25J453YEH-_ZkDvLszYmt3TV1hAIV_3cOTIuu1PPgd4Dq315uw8P5Ty5B_42mZRnie1PXpHB8iw6l6bp-2ET7xb1CREb902QsZcfBAF63seCcduKREGEsEqDlYgN_6cspryAjLTjL893z0mBOQs3zWXzAyrxfViYfFlHBXCSdJ8UO0wejdZICUFHEBZdoMj-ThXLcWIN1ZI9RqTy1Lsm3YoNhl8KxZowzay3Amuk3-vgCg0mLRcsnPlIxNZn_gqPj7avlfmnakuF4qF-qnlCb_uPjWfh5G_MNZd3DgjlhOTbyKA9uq7PvTvW_bos8kaQRW5tF4KpGDFNwgpEEwwMwB_Y1l036oXOEfLY6tUssk9ekDcSnYyGAP0rsmwNJjFVE1r91zYfPWGoDjzMTidg3tMD6Kf5HH7GLxCrqJQDqqDyznxdHjfSyT_35H8SWpo-iavvcvH1XGYnT_mcqy_oN1xDZAXQmMVBKfjQB7JuNMNrUU6AsTNtrvVoXkYYyqZrXsVACZKskym3lHuU1bYVrKZxMtBc3GZCwdZ08SQ77ngiOAjepKQzPSVRrXgeWDVE8a5DM5lcq6vWWw8h0tAHl8l5zlNrhOEi1wuAxll7_LYOBxgWkN9c_OKc65rn0L_Qj08H_Jlv7phXbBJmNWoVlCnlHWQSVn90PQALWs8QtYcdMQ2XVbq-Q=w352-h286-no?authuser=0">
+		</div>
+	</div>
+</div>
+
+<!--- Heading Section -->
+<div class="container-fluid padding">
+	<div class="row welcome text-center">
+		<div class="col-12">
+			<h1 class="display-4">Iris Flower Classification</h1>
+		</div>
+		<hr>
+	</div>
+</div>
+
+  <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<center>Sepal Length (min - 4.3, max - 7.9)<br>
+		<input type="text" name="sepal_length" required="required" /><br><br>
+        Sepal Width (min - 2.0, max - 4.4)<br>
+		<input type="text" name="sepal_width" required="required" /><br><br>
+		Petal Length (min - 1.0, max - 6.9)<br>
+		<input type="text" name="petal_length" required="required" /><br><br>
+		Petal Width (min - 0.1, max - 2.5)<br>
+		<input type="text" name="petal_width" required="required" /><br><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+	<br>
+   <br>
+   <center>{{ prediction_text }}</center><br>
+	<hr>
+
+  
+<!--- Meet the team -->
+<div class="container-fluid padding">
+	<div class="row welcome text-center">
+		<div class="col-12">
+			<h1 class="display-4">SPECIES</h1>	
+		</div>
+	</div>
+</div>
+
+<!--- Cards -->
+<div class="container-fluid padding">
+	<div class="row padding">
+		<div class="col-md-4">
+			<div class="card">
+				<img class="card-img-top" src="https://lh3.googleusercontent.com/OoaLx70Z-fdtGXa4iwbsKMOdnTMDUEfN5oG16N0DtckJcygDuVOvObtUEKMbU8tWdAkT_SngZwAIGwcfjT6SPU4NDOSHimGfIG_iaWj3HfF9JPT6qPREYTWZ-DenGCEz70ANGy_3shmUFIq-QNh4PAXe6NegBZBXlhnPXvBKlYIemMo-0S0wn4cS2fzhH5q6mSsBuNWTx0yKsYQ00spV5F6O1mWw4t6RVl43baIENt4j3HjnbpaRoL40hGR-rffGfhOK9q22-V0MBptoyrs2vUmG2uKSu0lfB7CL2utBTVSDZVTxi2TA5q7yLl2Z-C5xL-_93wxZKr6UlQLhmpwTpZ9C9WK_6YYD_-yA0wA0_jptvgo_OeXmR48Y18597DvUk6QzWV-v2wI9sA1h8gHrMSvKxcaTqpaG1PVyeMPt1ncevx0C4rkT6aeZ0we6gARZMkbdiKaWzgOEDba5fJd8AAfrk3PC9Jbi7kWv1WVwrLPpNYMXVsqFxwnrgCX8Q1f7bFJjD144HA6l4R17hVXVLyP4k_U4FZVBgub3iZCEg_UBBQEzsI1XkctwISM7hq4sQW_cUQVbYuoGsc5gDRw9aqZ2LJWOWuJOYv34U8NEwFkV60BP4N_EKPtBuzbOwUGUq1aTY87c1c0xx0hbz8x6_0SOCHEA2PmAcKQdH5rKfpp6G6zi0CB3h4fjZP9aog=w687-h914-no?authuser=0" height="500">
+				<div class="card-body">
+					<h4 class="card-title"><center>Iris-setosa</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<img class="card-img-top" src="https://lh3.googleusercontent.com/1vYolDS6t96USpX73zLOSWGSd3czzyW0nzGjrOGpqRx_NNS02QdE69zX0WPvhCkMJAb0U_fjHAziAhbpGZxYVjBLWpKd-6aztFeWPqXYaI8DpUnuaWbXfVA7UFjz9twXt5m3Rt_A_DErK7p-uW7KsUGMGkFr2zwpSZvIDf8S3DoJ-pUtmmTzSlDn8ojMT2GYBPdJaAlhy73DuoHLWOnASZwJpDiL9OfcZv-p5TTfsS9n110lWAMkjrZ9X0qpHli8zC53XcGF_6JdS19cvNOhAIU4wY9xbyWDrz87yikcRr-o43BOm2iqlvFrwZ_F5qEYdVO2LSqMPFiFgd1FEaUX6aShCpeAWwCx4eK_cmazHaw2b57NYCEsmNCVVycrr-O2p0St955JhnVawm2dwbrp-vAM6tpf0CLOBkbjNkYIX8W9nErVTj0bbPsAx6d6pONUhC49CnV7gvi7gDn3j9eruf6t7C-mMnKNo4GxPFu_4qEBNU7kQrdJ03T3OJHrhPuVWKiYnQGXfTQClzfuf0409jdOUgzkfNeyfsa07mFpyVbpJOv676Z6BW6r28pp0N32EeBQKxUlAehwSYjaRUOXw1AhOPpfSvXhtufxMGL8Nw08o6xVcNSRR-nevSasfitQM7u-YVt-pPZaYQF3Wh5VtxOm6iaYQzLXbDkJEa9sP8UTpLJuDswXBsXwwDtDAA=s800-no?authuser=0" height="500">
+				<div class="card-body">
+					<h4 class="card-title"><center>Iris-versicolor</h4>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<img class="card-img-top" src="https://lh3.googleusercontent.com/0kJZK6GGB97gIUpEudhcCJC2FpCL2Q0UChpY2AwXSihJ6WEfWrXg8vvAygZutul4SZRqcdXf4bN0HEFYiC6apLaS2Jx_iUqEdpXJd75mJ2sYxKkFf7zbxUkoNzTgqQPptOt88glMVsA7a2_WHbpHeSLHzUiWYSDyZxrqc8tglcKHH5xoEZfi90wRHzbtxxkueqO3tVb9FjFoPkzCmNIVsKp9wtBGH0DvTaiElPjUYiWuu29GBgGWPv2fAM3k01JVlDJXe-TgOLiphbl8ep9pa81RuGNdwMZFQ_GPzgqh7hsDWVZ5if-GXoZjXtGhayT9yA7Z6vzdGIsLoJ0h-4O_FdJZ59m2mRwOGyyRnvDQJL67DkUGXp9uFznjxdNq2nR_4VY9SePa5un5HL2P9xFHZSjwQ749mwlmQOQksDVUWb7CD7BmsSxkle_uAShd6QHk3gKTaH50gwl6YnSfQDL8GGoyXB4wl4eWHbjFygW9CHHj7NC_u_iizTLr_syD9ueG996hee-F4Wg8iKN5P2kiJImDV0iNmYvWeO0h4h-N7L7WUZqf67QIkXzyw19DFxkK7RG3jJnuDep1CBlm_Ve_GWMmnfzR1hcrx1pyQ5c3vPH4QyMM3shLp2OBRAU6H659_1hdw5VfRXcsSvN7rarxCB9cAFQ-l1VBpQXCzZORllUK-7iXiP1shwdt61geqQ=s800-no?authuser=0" height="500">
+				<div class="card-body">
+					<h4 class="card-title"><center>Iris-virginica</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--- Connect -->
+<div class="container-fluid padding">
+	<div class="row text-center padding">
+		<div class="col-12">
+			<h2>Connect</h2>
+		</div>
+		<div class="col-12 social padding">
+			<a href="https://www.facebook.com/harshitjain330"><i class="fab fa-facebook"></i></a>
+			<a href="https://www.linkedin.com/in/harshit-kumar-jain-aa88921a2/"><i class="fab fa-linkedin-in"></i></a>
+			<a href="https://www.instagram.com/harshitjain_15/"><i class="fab fa-instagram"></i></a>
+			<a href="https://github.com/harshitkumarj"><i class="fab fa-github"></i></a>
+		</div>
+	</div>
+</div>
+
+<!--- Footer -->
+<footer>
+<right>Created by HARSHIT KUMAR JAIN</right><br><br>
+</footer>
+
+
+
+</body>
+</html>
